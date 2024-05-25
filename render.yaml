@@ -3,14 +3,10 @@ services:
     name: rails-search
     runtime: ruby
     plan: free
-    buildCommand: "./bin/render-build.sh"
-    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
+    buildCommand: "./bin/render-build.sh && bundle exec rake assets:precompile"
+#    preDeployCommand: "bundle exec rails db:migrate && bundle exec rails assets:precompile"
     startCommand: "bundle exec rails server"
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: mysite
-          property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
       - key: WEB_CONCURRENCY
