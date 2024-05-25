@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "articles" do %>
+  <div class="min-w-full grid grid-cols-1 lg:grid-cols-4 gap-4">
+    <% @articles.each do |article| %>
+      <%= turbo_frame_tag dom_id(article) do %>
+        <%= render article %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
