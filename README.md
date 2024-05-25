@@ -1,24 +1,24 @@
-# README
+## Realtime Search 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple search engine that uses the Rails Turbo to update the search results in real time.
 
-Things you may want to cover:
+## How to run the project
 
-* Ruby version
+1. Clone the repository
+2. Run `bundle install`
+3. Run `rails db:create db:migrate
+4. Run `rails s`
+5. Open the browser and go to `http://localhost:3000`
 
-* System dependencies
+## Running the tests
 
-* Configuration
+To run the tests, run `rspec spec` in the terminal.
 
-* Database creation
+## Built With
 
-* Database initialization
+* [Ruby on Rails](https://rubyonrails.org/) - The web framework used
 
-* How to run the test suite
+## Authors
 
-* Services (job queues, cache servers, search engines, etc.)
+* **Kimita Wanjohi** - [github](https://github.com/kimitawanjohi)
 
-* Deployment instructions
-
-* ...
