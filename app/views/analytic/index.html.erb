@@ -1,0 +1,42 @@
+<div class="w-full flex flex-col items-center justify-between">
+  <h1 class="font-bold text-4xl text-center mb-4">Search Analytics</h1>
+  <div class="w-full flex justify-between items-center">
+    <div class="w-full flex flex-col items-center justify-center">
+      <h2 class="font-bold text-2xl mb-2 text-center">User Search</h2>
+      <% @queries.each do |user, searches| %>
+        <h3 class="font-medium mb-4 text-lg"><%= user %> search for </h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <% searches.each do |query| %>
+            <div class="card bordered shadow-lg">
+              <div class="card-body p-3">
+                <h2 class="card-title text-2xl">
+                  <%= query.search %>
+                </h2>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="w-full flex flex-col items-center justify-center">
+      <h2 class="font-bold text-2xl mb-2">Top Searches</h2>
+        <table class="table w-full">
+          <thead>
+            <tr>
+              <th>Search</th>
+              <th>Count</th>
+            </tr>
+          </thead>
+      <% @top_queries.each do |search, count| %>
+          <tbody>
+            <tr>
+              <td><%= search %></td>
+              <td><%= count %></td>
+            </tr>
+          </tbody>
+        <% end %>
+        </table>
+    </div>
+  </div>
+</div>

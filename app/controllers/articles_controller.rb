@@ -87,6 +87,8 @@ class ArticlesController < ApplicationController
     else
       if search.start_with?(last_query.search)
         last_query.update(search: search)
+      elsif last_query.search.include?(search)
+        # do nothing
       else
         Query.create(search: search, user_ip: user_ip)
       end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'analytic/index'
   get 'static/analytic'
   get 'static/index'
   resources :queries
