@@ -1,11 +1,11 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
-
   # GET /articles or /articles.json
   def index
     if params[:query].present?
       # search for articles with titles or content that match the query
       @articles = Article.where("title LIKE ? OR content LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+      save_query(params[:query], request.remote_ip)
     else
       @articles = Article.all
     end
@@ -14,7 +14,6 @@ class ArticlesController < ApplicationController
       render partial: "articles", locals: { articles: @articles }
     end
   end
-
 
 
   # GET /articles/1 or /articles/1.json
@@ -78,4 +77,19 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :content)
     end
+
+
+  def save_query(search, user_ip)
+    last_query = Query.where(user_ip: user_ip).last
+
+    if last_query.nil?
+      Query.create(search: search, user_ip: user_ip)
+    else
+      if search.start_with?(last_query.search)
+        last_query.update(search: search)
+      else
+        Query.create(search: search, user_ip: user_ip)
+      end
+    end
+  end
 end
