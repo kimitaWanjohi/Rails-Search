@@ -7,7 +7,7 @@ import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 eagerLoadControllersFrom("controllers", application)
 
 
-import SearchFormController from "./search_form_controller";
+import SearchFormController from "./hello_controller";
 application.register("search-form", SearchFormController)
 
 // Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
